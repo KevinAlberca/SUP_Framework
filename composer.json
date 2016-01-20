@@ -6,7 +6,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": ["app/", "app/Controller/"]
+            "App\\": ["app/"],
+            "Core\\": ["core/"]
         }
     },
     "authors": [
