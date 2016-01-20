@@ -7,5 +7,6 @@
  */
 require_once("../vendor/autoload.php");
 
-$routing = new App\Routing();
+$routing = new Core\Routing("dev");
+
 

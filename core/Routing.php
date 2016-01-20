@@ -7,19 +7,22 @@
  * Time: 09:40
  */
 
-namespace App;
+namespace Core;
 
 use Symfony\Component\Yaml\Yaml;
 
 class Routing
 {
-    public function __construct() {
+    private $_env;
 
+    public function __construct($env) {
+        $this->_env = $env;
     }
 
     public function getRoute() {
         return $_SERVER["REQUEST_URI"];
     }
+
 
 
 }
