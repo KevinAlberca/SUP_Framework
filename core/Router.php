@@ -11,7 +11,7 @@ namespace Core;
 
 use Symfony\Component\Yaml\Yaml;
 
-class Routing
+class Router
 {
     private $_env;
 
@@ -23,6 +23,8 @@ class Routing
         return $_SERVER["REQUEST_URI"];
     }
 
-
-
+    private function readRoutes(){
+        $file = file_get_contents(__DIR__."/../app/routing-".$this->_env.".yml");
+        return Yaml::parse($file);
+    }
 }
