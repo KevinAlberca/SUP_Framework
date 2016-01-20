@@ -7,9 +7,9 @@
  */
 require_once("../vendor/autoload.php");
 
-$routing = new Core\Router("dev");
+$router = new Core\Router("dev");
 
-if($routing->checkIfRouteExist()){
+if($router->checkIfRouteExist($router->getRoute())){
     // Require the view
     echo "<h1>View</h1>";
 } else {
