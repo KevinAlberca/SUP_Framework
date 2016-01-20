@@ -17,28 +17,26 @@ class Router
 
     public function __construct($env) {
         $this->_env = $env;
-
-        var_dump($this->checkIfRouteExist());
     }
 
     public function getRoute() {
         return $_SERVER["REQUEST_URI"];
     }
 
-    private function readRoutes() {
-        $file = file_get_contents(__DIR__."/../app/routing-".$this->_env.".yml");
-        return Yaml::parse($file);
-    }
-
-    private function checkIfRouteExist() {
+    public function checkIfRouteExist() {
         $routing = $this->readRoutes();
         $route = $this->getRoute();
         foreach ($routing as $routes) {
             if ($routes["route"] == $route) {
-                return "exists";
+                return true;
             } else {
-                return "not found";
+                return false;
             }
         }
+    }
+
+    private function readRoutes() {
+        $file = file_get_contents(__DIR__."/../app/routing-".$this->_env.".yml");
+        return Yaml::parse($file);
     }
 }
