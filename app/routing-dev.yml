@@ -1,0 +1,3 @@
+route_name:
+    route: "/SUP_MVC"
+    controller: Bundle:Controller:Action
