@@ -1,11 +1,11 @@
 #route_name:
 #    route: "/Your/Route"
-#    controller: Bundle:Controller:Action
+#    controller: Controller:Action
 
 homepage:
     route: "/"
-    controller: Dev:Test:test
+    controller: Test:test
 
 route_name:
     route: "/SUP_MVC"
-    controller: Bundle:Controller:Action
+    controller: Controller:Action
