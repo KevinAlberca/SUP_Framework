@@ -19,10 +19,19 @@ class Controller
     public function __construct($env) {
         $this->_env = $env;
         $this->_route = Router::getRoute();
+
+        $this->getControllerOfRoute();
     }
 
     public function getControllerOfRoute() {
+        $c = $this->readThisRoute($this->_route);
+        $controllerName = explode(":", $c)[0]."Controller";
+        $actionName = explode(":", $c)[1]."Action";
 
+        require_once(__DIR__."/../ressources/Controller/".$controllerName.".php");
+        $controllerWithNamespace = "\\Controller\\".$controllerName;
+        $controller = new $controllerWithNamespace;
+        return $controller->$actionName();
     }
 
     private function readThisRoute($route) {
@@ -32,7 +41,7 @@ class Controller
                 return $routes["controller"];
             }
         }
-        return null;
+        throw new \Exception("There is any route for you");
     }
 
 
