@@ -18,7 +18,9 @@ class TestController
     public function testAction(){
         return [
             "view" => "test.html.twig",
+            "args" => [
 
+            ]
         ];
     }
 
