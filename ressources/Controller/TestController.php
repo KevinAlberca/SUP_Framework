@@ -15,11 +15,21 @@ class TestController
     {
     }
 
-    public function testAction(){
+    public function testAction() {
         return [
             "view" => "test.html.twig",
             "args" => [
 
+            ]
+        ];
+    }
+
+    public function defaultAction() {
+        $var = "We test an argument";
+        return [
+            "view" => "default.html.twig",
+            "args" => [
+                "test" => $var
             ]
         ];
     }

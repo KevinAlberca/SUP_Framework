@@ -12,8 +12,15 @@ require_once("../vendor/autoload.php");
 $router = new Core\Router("dev");
 $controller = new Core\Controller("dev");
 
+
 $loader = new Twig_Loader_Filesystem(__DIR__."/../ressources/Views");
-$twig = new Twig_Environment($loader);
+$loader->addPath(__DIR__."/../ressources", "");
+$twig = new Twig_Environment($loader, [
+    "charset" => "utf-8",
+    "debug" => true,
+
+]);
+
 
 if ($router->checkIfRouteExist($router->getRoute())) {
     $response = $controller->getControllerOfRoute();
