@@ -8,4 +8,4 @@ homepage:
 
 route_name:
     route: "/SUP_MVC"
-    controller: Controller:Action
+    controller: Test:default
