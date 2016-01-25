@@ -19,7 +19,7 @@ class Router
         $this->_env = $env;
     }
 
-    public function getRoute() {
+    public static function getRoute() {
         return $_SERVER["REQUEST_URI"];
     }
 
@@ -37,4 +37,5 @@ class Router
         $file = file_get_contents(__DIR__."/../app/routing-".$this->_env.".yml");
         return Yaml::parse($file);
     }
+
 }
