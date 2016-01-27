@@ -13,7 +13,8 @@ class Access
 {
 
     public function __construct() {
-        var_dump($this->getTime(), $this->getUserAgent());
+        var_dump($_SERVER);
+        var_dump($this->getTime(), $this->getUserAgent(), $this->getProtocol());
     }
 
     private function getTime() {
@@ -23,5 +24,10 @@ class Access
     private function getUserAgent() {
         return $_SERVER["HTTP_USER_AGENT"];
     }
+
+    private function getProtocol() {
+        return $_SERVER["SERVER_PROTOCOL"];
+    }
+
 
 }
