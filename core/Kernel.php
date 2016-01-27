@@ -22,11 +22,11 @@ class Kernel
         $this->env = $env;
 
         $this->_router= new Router($this->env);
-        $this->_controller = new Controller($this->env);
+        $this->_router->getRoute();
 
 
         if ($this->_router->checkIfRouteExist($this->_router->getRoute())) {
-            $this->_controller->getControllerOfRoute();
+            $this->_router->getControllerOfRoute();
         }
     }
 }

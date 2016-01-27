@@ -14,9 +14,6 @@ use Core\Response\Response;
 
 class TestController extends Controller
 {
-    public function __construct()
-    {
-    }
 
     public function testAction() {
         return new Response("test.html.twig");
@@ -24,7 +21,7 @@ class TestController extends Controller
 
     public function defaultAction() {
         $var = "We test an argument";
-$this->
+
         return new Response("default.html.twig", [
             "test" => $var,
         ]);
