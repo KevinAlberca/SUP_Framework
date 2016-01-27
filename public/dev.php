@@ -14,3 +14,4 @@ define("SRC_ROUTE", __DIR__."/../ressources");
 define("PUBLIC_ROUTE", __DIR__."/../public");
 
 new \Core\Kernel("dev");
+
