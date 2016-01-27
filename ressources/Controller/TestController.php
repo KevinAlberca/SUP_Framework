@@ -16,7 +16,7 @@ class TestController extends Controller
 {
 
     public function testAction() {
-        return new Response("test.html.twig");
+        return $this->returnView("test.html.twig");
     }
 
     public function defaultAction() {

@@ -9,10 +9,14 @@
 namespace Core\Controller;
 
 use Core\Kernel;
+use Core\Response\Response;
 use Core\Router\Router;
 use Symfony\Component\Yaml\Yaml;
 
 class Controller
 {
 
+    public function returnView($view) {
+        return new Response($view);
+    }
 }
