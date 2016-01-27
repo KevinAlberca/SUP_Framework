@@ -28,9 +28,8 @@ class Router
         $allRoutes = array_search($currentRoute, array_column($routing, "route"));
         if ($allRoutes !== false) {
             return true;
-        } else {
-            throw new \Error("Any route match");
         }
+        return null;
     }
 
     public function readRoutes() {
@@ -57,7 +56,6 @@ class Router
                 return $routes["controller"];
             }
         }
-        throw new \Exception("There is any route for you");
     }
 
 }
