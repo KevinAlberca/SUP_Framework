@@ -6,3 +6,5 @@ vendor/
 .idea/
 .idea/*
 /.idea/*
+
+*.log
