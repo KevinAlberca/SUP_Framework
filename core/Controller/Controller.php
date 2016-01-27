@@ -16,7 +16,11 @@ use Symfony\Component\Yaml\Yaml;
 class Controller
 {
 
-    public function returnView($view) {
+    public function renderView($view) {
         return new Response($view);
+    }
+
+    public function render($view, Array $params) {
+        return new Response($view, $params);
     }
 }

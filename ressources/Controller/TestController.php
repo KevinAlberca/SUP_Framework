@@ -16,13 +16,13 @@ class TestController extends Controller
 {
 
     public function testAction() {
-        return $this->returnView("test.html.twig");
+        return $this->renderView("test.html.twig");
     }
 
     public function defaultAction() {
         $var = "We test an argument";
 
-        return new Response("default.html.twig", [
+        return $this->render("default.html.twig", [
             "test" => $var,
         ]);
     }
