@@ -7,7 +7,7 @@
  * Time: 09:40
  */
 
-namespace Core;
+namespace Core\Router;
 
 use Symfony\Component\Yaml\Yaml;
 
@@ -34,7 +34,7 @@ class Router
     }
 
     public function readRoutes() {
-        $file = file_get_contents(__DIR__."/../app/routing-".$this->_env.".yml");
+        $file = file_get_contents(APP_ROUTE."/routing-".$this->_env.".yml");
         return Yaml::parse($file);
     }
 

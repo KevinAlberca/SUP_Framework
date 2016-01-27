@@ -9,29 +9,25 @@
 
 namespace Controller;
 
-class TestController
+use Core\Controller\Controller;
+use Core\Response\Response;
+
+class TestController extends Controller
 {
     public function __construct()
     {
     }
 
     public function testAction() {
-        return [
-            "view" => "test.html.twig",
-            "args" => [
-
-            ]
-        ];
+        return new Response("test.html.twig");
     }
 
     public function defaultAction() {
         $var = "We test an argument";
-        return [
-            "view" => "default.html.twig",
-            "args" => [
-                "test" => $var
-            ]
-        ];
+$this->
+        return new Response("default.html.twig", [
+            "test" => $var,
+        ]);
     }
 
 }

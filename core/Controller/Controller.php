@@ -6,12 +6,13 @@
  * Time: 08:56
  */
 
-namespace Core;
+namespace Core\Controller;
 
-
+use Core\Kernel;
+use Core\Router\Router;
 use Symfony\Component\Yaml\Yaml;
 
-class Controller
+class Controller extends Kernel
 {
     private $_route;
     private $_env;
@@ -19,23 +20,21 @@ class Controller
     public function __construct($env) {
         $this->_env = $env;
         $this->_route = Router::getRoute();
-
-        $this->getControllerOfRoute();
     }
 
-    public function getControllerOfRoute() {
+    protected function getControllerOfRoute() {
         $c = $this->readThisRoute($this->_route);
         $controllerName = explode(":", $c)[0]."Controller";
         $actionName = explode(":", $c)[1]."Action";
 
-        require_once(__DIR__."/../ressources/Controller/".$controllerName.".php");
+        require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
         $controllerWithNamespace = "\\Controller\\".$controllerName;
         $controller = new $controllerWithNamespace;
         return $controller->$actionName();
     }
 
     private function readThisRoute($route) {
-        $routing = Yaml::parse(file_get_contents(__DIR__."/../app/routing-".$this->_env.".yml"));
+        $routing = Yaml::parse(file_get_contents(APP_ROUTE."/routing-".$this->_env.".yml"));
         foreach ($routing as $routes) {
             if($routes["route"] == $route) {
                 return $routes["controller"];

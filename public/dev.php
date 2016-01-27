@@ -26,8 +26,6 @@ if ($router->checkIfRouteExist($router->getRoute())) {
     $response = $controller->getControllerOfRoute();
 
     if(!empty($response["view"])){
-
-//        var_dump($response["view"]);
         echo $twig->render($response["view"], $response["args"]);
     }
 }
