@@ -9,23 +9,8 @@
 
 require_once("../vendor/autoload.php");
 
-$router = new Core\Router("dev");
-$controller = new Core\Controller("dev");
+define("APP_ROUTE", __DIR__."/../app");
+define("SRC_ROUTE", __DIR__."/../ressources");
+define("PUBLIC_ROUTE", __DIR__."/../public");
 
-
-$loader = new Twig_Loader_Filesystem(__DIR__."/../ressources/Views");
-$loader->addPath(__DIR__."/../ressources", "");
-$twig = new Twig_Environment($loader, [
-    "charset" => "utf-8",
-    "debug" => true,
-
-]);
-
-
-if ($router->checkIfRouteExist($router->getRoute())) {
-    $response = $controller->getControllerOfRoute();
-
-    if(!empty($response["view"])){
-        echo $twig->render($response["view"], $response["args"]);
-    }
-}
+new \Core\Kernel("dev");
