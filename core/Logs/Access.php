@@ -12,10 +12,6 @@ namespace Core\Logs;
 class Access
 {
 
-    public function __construct() {
-        $this->writeLog();
-    }
-
     public function writeLog() {
         file_put_contents(APP_ROUTE."/logs/access.log", $this->getMessageLog(), FILE_APPEND);
     }

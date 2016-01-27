@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule .* public/dev.php
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule .* public/dev.php [L]
+</IfModule>
+<files .htaccess>
+    Order allow,deny
+    Deny from all
+</files>
+
+#Options -Indexes
