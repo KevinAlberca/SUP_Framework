@@ -13,11 +13,19 @@ class Access
 {
 
     public function __construct() {
-        var_dump($this->getTime(), $this->getUserAgent(), $this->getProtocol(), $this->getRequestedURI());
+        $this->writeLog();
+    }
+
+    public function writeLog() {
+        file_put_contents(APP_ROUTE."/logs/access.log", $this->getMessageLog(), FILE_APPEND);
+    }
+
+    private function getMessageLog() {
+        return "[".$this->getTime()."] ".$this->getUserAgent()." | Protocol used : ".$this->getProtocol(). " | Requested URI : ".$this->getRequestedURI()."\n";
     }
 
     private function getTime() {
-        return "[".date("Y-m-d H:i:s")."]";
+        return date("Y-m-d H:i:s");
     }
 
     private function getUserAgent() {

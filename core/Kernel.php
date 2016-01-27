@@ -8,8 +8,8 @@
 
 namespace Core;
 
+use Core\Logs\Access;
 use Core\Router\Router;
-use Core\Controller\Controller;
 
 
 class Kernel
@@ -24,6 +24,7 @@ class Kernel
         $this->_router= new Router($this->env);
         $this->_router->getRoute();
 
+        $this->_access = new Access();
 
         if ($this->_router->checkIfRouteExist($this->_router->getRoute())) {
             $this->_router->getControllerOfRoute();
