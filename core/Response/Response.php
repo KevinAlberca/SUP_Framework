@@ -13,7 +13,7 @@ class Response
 {
     private $_twig;
 
-    public function __construct(String $view, Array $param = []) {
+    public function __construct($view, $param = []) {
         $loader = new \Twig_Loader_Filesystem(SRC_ROUTE."/Views");
         $loader->addPath(SRC_ROUTE. "/", "");
         $this->_twig = new \Twig_Environment($loader, [
