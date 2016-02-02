@@ -38,24 +38,56 @@ class Router
 
     public function getControllerOfRoute() {
         $c = $this->readThisRoute($this->getRoute());
-        // $controllerName = explode(":", $c)[0]."Controller";
-        // $actionName = explode(":", $c)[1]."Action";
-        // require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
-        // $controllerWithNamespace = "\\Controller\\".$controllerName;
-        // $controller = new $controllerWithNamespace;
-        // return $controller->$actionName();
+//        var_dump($c);
+
+
+
+
+//         $controllerName = explode(":", $c)[0]."Controller";
+//         $actionName = explode(":", $c)[1]."Action";
+//         require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
+//         $controllerWithNamespace = "\\Controller\\".$controllerName;
+//         $controller = new $controllerWithNamespace;
+//         return $controller->$actionName();
     }
 
     private function readThisRoute($route) {
         $routing = $this->readRoutes();
         foreach ($routing as $routes) {
-            $args = [];
-            $vars = [];
+
+            if((preg_match_all("/\\/<*[a-zA-Z0-9]*>/", $routes["route"]) === preg_match_all("/\\/[a-zA-Z0-9]*/", $route)-1)){
+                $args = explode("/", $routes["route"]);
+                $vars = explode("/",$route);
+
+//                unset($args[0], $vars[0]);
 
 
-            var_dump($routes["route"], $route);
+                $arguments = [];
+                $keysToExtract = array_keys(array_diff($args, $vars));
+
+                foreach ($keysToExtract as $keyToExtract) {
+                    $arguments[] = $vars[$keyToExtract];
+                }
+
+//                var_dump($arguments);
+                return [
+                    "controller" => $routes["controller"], 
+                    "arguments" => $arguments,
+                ];
+            } else {
+                // NEW ERROR TO DO
+            }
         }
+
+        return null;
     }
+
+//    private function checkIfRouteHasArgument($route) {
+//        $routing = $this->readRoutes();
+//        foreach($routing as $routes) {
+//            var_dump($routes, $route);
+//        }
+//    }
 
     // private function readThisRoute($route) {
     //     $routing = $this->readRoutes();
