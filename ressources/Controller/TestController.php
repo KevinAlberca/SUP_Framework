@@ -15,15 +15,17 @@ use Core\Response\Response;
 class TestController extends Controller
 {
 
-    public function testAction() {
-        return $this->renderView("test.html.twig");
-    }
-
     public function defaultAction() {
         $var = "We test an argument";
-
         return $this->render("default.html.twig", [
             "test" => $var,
+        ]);
+    }
+
+    public function testVarAction($var, $otherAction) {
+        return $this->render("testVar.html.twig", [
+            "var" => $var,
+            "other" => $otherAction,
         ]);
     }
 

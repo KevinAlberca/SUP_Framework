@@ -38,17 +38,14 @@ class Router
 
     public function getControllerOfRoute() {
         $c = $this->readThisRoute($this->getRoute());
-//        var_dump($c);
+        $controllerName = explode(":", $c["controller"])[0]."Controller";
+        $actionName = explode(":", $c["controller"])[1]."Action";
 
+        require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
+        $controllerWithNamespace = "\\Controller\\".$controllerName;
+        $controller = new $controllerWithNamespace;
 
-
-
-//         $controllerName = explode(":", $c)[0]."Controller";
-//         $actionName = explode(":", $c)[1]."Action";
-//         require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
-//         $controllerWithNamespace = "\\Controller\\".$controllerName;
-//         $controller = new $controllerWithNamespace;
-//         return $controller->$actionName();
+        return call_user_func_array(array($controller, $actionName), $c["arguments"]);
     }
 
     private function readThisRoute($route) {
@@ -59,9 +56,6 @@ class Router
                 $args = explode("/", $routes["route"]);
                 $vars = explode("/",$route);
 
-//                unset($args[0], $vars[0]);
-
-
                 $arguments = [];
                 $keysToExtract = array_keys(array_diff($args, $vars));
 
@@ -69,7 +63,6 @@ class Router
                     $arguments[] = $vars[$keyToExtract];
                 }
 
-//                var_dump($arguments);
                 return [
                     "controller" => $routes["controller"], 
                     "arguments" => $arguments,
@@ -82,19 +75,4 @@ class Router
         return null;
     }
 
-//    private function checkIfRouteHasArgument($route) {
-//        $routing = $this->readRoutes();
-//        foreach($routing as $routes) {
-//            var_dump($routes, $route);
-//        }
-//    }
-
-    // private function readThisRoute($route) {
-    //     $routing = $this->readRoutes();
-    //     foreach ($routing as $routes) {
-    //         if($routes["route"] == $route) {
-    //             return $routes["controller"];
-    //         }
-    //     }
-    // }
 }
