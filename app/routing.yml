@@ -1,0 +1,19 @@
+#route_name:
+#    route: "/Your/Route"
+#    controller: Controller:Action
+
+homepage:
+    route: "/"
+    controller: Test:default
+
+route_name:
+    route: "/SUP_MVC"
+    controller: Test:default
+
+test_route:
+    route: "/test/{action}/{otherAction}"
+    controller: Test:testVar
+
+test_route2:
+    route: "/test/{var}/{otherVar}"
+    controller: Test:testVar

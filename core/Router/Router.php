@@ -8,7 +8,6 @@
  */
 
 namespace Core\Router;
-
 use Symfony\Component\Yaml\Yaml;
 
 class Router
@@ -33,29 +32,37 @@ class Router
     }
 
     public function readRoutes() {
-        $file = file_get_contents(APP_ROUTE."/routing-".$this->_env.".yml");
+        $file = file_get_contents(APP_ROUTE."/routing.yml");
         return Yaml::parse($file);
     }
 
     public function getControllerOfRoute() {
         $c = $this->readThisRoute($this->getRoute());
-        $controllerName = explode(":", $c)[0]."Controller";
-        $actionName = explode(":", $c)[1]."Action";
-
-        require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
-        $controllerWithNamespace = "\\Controller\\".$controllerName;
-        $controller = new $controllerWithNamespace;
-
-        return $controller->$actionName();
+        // $controllerName = explode(":", $c)[0]."Controller";
+        // $actionName = explode(":", $c)[1]."Action";
+        // require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
+        // $controllerWithNamespace = "\\Controller\\".$controllerName;
+        // $controller = new $controllerWithNamespace;
+        // return $controller->$actionName();
     }
 
     private function readThisRoute($route) {
         $routing = $this->readRoutes();
         foreach ($routing as $routes) {
-            if($routes["route"] == $route) {
-                return $routes["controller"];
-            }
+            $args = [];
+            $vars = [];
+
+
+            var_dump($routes["route"], $route);
         }
     }
 
+    // private function readThisRoute($route) {
+    //     $routing = $this->readRoutes();
+    //     foreach ($routing as $routes) {
+    //         if($routes["route"] == $route) {
+    //             return $routes["controller"];
+    //         }
+    //     }
+    // }
 }
