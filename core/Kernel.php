@@ -29,10 +29,10 @@ class Kernel
         $this->_access = new Access();
         $this->_access->writeLog();
 
-        if ($this->_router->checkIfRouteExist($this->_router->getRoute())) {
+//        if ($this->_router->checkIfRouteExist($this->_router->getRoute())) {
             $this->_router->getControllerOfRoute();
-        } else {
-            new Error("There is any route for your current : ".$this->_router->getRoute(), 404);
-        }
+//        } else {
+//            new Error("There is any route for your current : ".$this->_router->getRoute(), 404);
+//        }
     }
 }

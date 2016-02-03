@@ -8,6 +8,7 @@
  */
 
 namespace Core\Router;
+use Core\Logs\Error;
 use Symfony\Component\Yaml\Yaml;
 
 class Router
@@ -37,15 +38,19 @@ class Router
     }
 
     public function getControllerOfRoute() {
-        $c = $this->readThisRoute($this->getRoute());
-        $controllerName = explode(":", $c["controller"])[0]."Controller";
-        $actionName = explode(":", $c["controller"])[1]."Action";
+        if($this->readThisRoute($this->getRoute())) {
+            $c = $this->readThisRoute($this->getRoute());
+            $controllerName = explode(":", $c["controller"])[0]."Controller";
+            $actionName = explode(":", $c["controller"])[1]."Action";
 
-        require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
-        $controllerWithNamespace = "\\Controller\\".$controllerName;
-        $controller = new $controllerWithNamespace;
+            require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");
+            $controllerWithNamespace = "\\Controller\\".$controllerName;
+            $controller = new $controllerWithNamespace;
 
-        return call_user_func_array(array($controller, $actionName), $c["arguments"]);
+            return call_user_func_array(array($controller, $actionName), $c["arguments"]);
+        }
+        return null;
+
     }
 
     private function readThisRoute($route) {
@@ -67,11 +72,10 @@ class Router
                     "controller" => $routes["controller"], 
                     "arguments" => $arguments,
                 ];
-            } else {
-                // NEW ERROR TO DO
             }
         }
 
+        new Error("This route is unreadable");
         return null;
     }
 
