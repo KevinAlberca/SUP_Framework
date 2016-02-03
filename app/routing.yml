@@ -11,9 +11,9 @@ route_name:
     controller: Test:default
 
 test_route:
-    route: "/test/{action}/{otherAction}"
+    route: "/test/<unTruc>/<autreTruc>"
     controller: Test:testVar
 
 test_route2:
-    route: "/test/{var}/{otherVar}"
-    controller: Test:testVar
+    route: "/test/<var>/<otherVar>"
+    controller: Test:eeee
