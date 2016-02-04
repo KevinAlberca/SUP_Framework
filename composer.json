@@ -1,6 +1,6 @@
 {
     "name": "KevinAlberca/framework",
-    "description": "sup'internet php framework based on symfony or laravel",
+    "description": "SUP'Internet php framework based on symfony or laravel",
     "require": {
         "symfony/yaml": "^3.0",
         "twig/twig": "~1.0",
