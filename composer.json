@@ -3,7 +3,8 @@
     "description": "sup'internet php framework based on symfony or laravel",
     "require": {
         "symfony/yaml": "^3.0",
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "doctrine/orm": "*"
     },
     "autoload": {
         "psr-4": {
