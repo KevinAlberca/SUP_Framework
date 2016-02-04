@@ -8,10 +8,7 @@
 
 namespace Core\Controller;
 
-use Core\Kernel;
 use Core\Response\Response;
-use Core\Router\Router;
-use Symfony\Component\Yaml\Yaml;
 
 class Controller
 {
@@ -23,4 +20,5 @@ class Controller
     public function render($view, Array $params) {
         return new Response($view, $params);
     }
+
 }
