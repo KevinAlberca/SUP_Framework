@@ -9,9 +9,17 @@
 namespace Core\Controller;
 
 use Core\Response\Response;
+use Core\ORM;
 
 class Controller
 {
+
+    protected $orm;
+
+    public function __construct()
+    {
+        $this->orm = new \Core\ORM\Orm();
+    }
 
     public function renderView($view) {
         return new Response($view);
@@ -19,6 +27,12 @@ class Controller
 
     public function render($view, Array $params) {
         return new Response($view, $params);
+    }
+
+    public function getEntityManager() {
+        return $this->orm->getEntityManager();
+//        var_dump($orm);
+//        return Orm::$em;
     }
 
 }
