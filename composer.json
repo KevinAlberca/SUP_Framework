@@ -2,7 +2,8 @@
     "name": "KevinAlberca/framework",
     "description": "sup'internet php framework based on symfony or laravel",
     "require": {
-        "symfony/yaml": "^3.0"
+        "symfony/yaml": "^3.0",
+        "twig/twig": "~1.0"
     },
     "autoload": {
         "psr-4": {
