@@ -19,7 +19,7 @@ class Connexion
     private $_dbpass;
 
     public function __construct(){
-        var_dump($this->getConfigFile());
+
     }
 
     private function getConfigFile(){
