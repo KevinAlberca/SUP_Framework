@@ -23,15 +23,6 @@ class Router
         return $_SERVER["REQUEST_URI"];
     }
 
-    public function checkIfRouteExist($currentRoute) {
-        $routing = $this->readRoutes();
-        $allRoutes = array_search($currentRoute, array_column($routing, "route"));
-        if ($allRoutes !== false) {
-            return true;
-        }
-        return null;
-    }
-
     public function readRoutes() {
         $file = file_get_contents(APP_ROUTE."/routing.yml");
         return Yaml::parse($file);
@@ -50,10 +41,9 @@ class Router
             return call_user_func_array(array($controller, $actionName), $c["arguments"]);
         }
         return null;
-
     }
 
-    private function readThisRoute($route) {
+    public function readThisRoute($route) {
         $routing = $this->readRoutes();
         foreach ($routing as $routes) {
 
