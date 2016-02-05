@@ -2,6 +2,12 @@
 #    route: "/Your/Route"
 #    controller: Controller:Action
 
+# Your route must finish by a « / »
+
 homepage:
     route: "/"
-    controller: Product:getProducts
+    controller: "Product:getProducts"
+
+add_product:
+    route: "/add/"
+    controller: "Product:addProduct"

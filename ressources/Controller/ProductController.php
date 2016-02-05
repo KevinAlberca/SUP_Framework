@@ -16,11 +16,18 @@ use Doctrine\ORM\EntityManager;
 class ProductController extends Controller
 {
 
-    public function getProductsAction() {
+    public function getProductsAction()
+    {
         $products = $this->getEntityManager()->getRepository("\\Model\\Product")->findAll();
         return $this->render("productList.html.twig", [
             "products" => $products,
         ]);
+    }
+
+    public function addProductAction()
+    {
+        return $this->renderView("productAdd.html.twig");
+//        return $this->render("productAdd.html.twig", []);
     }
 
 }
