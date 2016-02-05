@@ -19,7 +19,7 @@ class Orm
     public function __construct()
     {
         if(empty(self::$em)) {
-            $paths = array(SRC_ROUTE."/Model/");
+            $paths = array(SRC_ROUTE."/Model");
             $isDevMode = true;
 
             $userConfig = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(APP_ROUTE."/config.yml"));

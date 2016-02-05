@@ -4,16 +4,4 @@
 
 homepage:
     route: "/"
-    controller: Test:default
-
-route_name:
-    route: "/SUP_MVC"
-    controller: Test:default
-
-test_route:
-    route: "/test/<unTruc>/<autreTruc>"
-    controller: Test:testVar
-
-test_route2:
-    route: "/test/<var>/<otherVar>"
-    controller: Test:eeee
+    controller: Product:getProducts

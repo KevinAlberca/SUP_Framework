@@ -31,8 +31,6 @@ class Controller
 
     public function getEntityManager() {
         return $this->orm->getEntityManager();
-//        var_dump($orm);
-//        return Orm::$em;
     }
 
 }
