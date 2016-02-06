@@ -11,3 +11,7 @@ homepage:
 add_product:
     route: "/add/"
     controller: "Product:addProduct"
+
+edit_product:
+    route: "/edit/<id>"
+    controller: "Product:editThisProduct"

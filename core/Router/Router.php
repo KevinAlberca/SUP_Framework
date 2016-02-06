@@ -30,7 +30,6 @@ class Router
     public function getControllerOfRoute() {
         if($this->readThisRoute($this->getRoute())) {
             $c = $this->readThisRoute($this->getRoute());
-            var_dump($c);
             $controllerName = explode(":", $c["controller"])[0]."Controller";
             $actionName = explode(":", $c["controller"])[1]."Action";
             require_once(SRC_ROUTE."/Controller/" .$controllerName.".php");

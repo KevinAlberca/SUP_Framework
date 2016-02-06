@@ -33,4 +33,8 @@ class Controller
         return $this->orm->getEntityManager();
     }
 
+    public function redirectTo($url = "") {
+        return die("<script>location.href = 'http://".$_SERVER["SERVER_NAME"].$url."'</script>");
+    }
+
 }
