@@ -8,6 +8,7 @@
  */
 namespace Core\ORM;
 
+use Core\Logs\Error;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
@@ -22,7 +23,11 @@ class Orm
             $paths = array(SRC_ROUTE."/Model");
             $isDevMode = true;
 
-            $userConfig = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(APP_ROUTE."/config.yml"));
+            if(file_exists(APP_ROUTE."/config.yml")){
+                $userConfig = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(APP_ROUTE."/config.yml"));
+            } else {
+                return new Error("Any config file exist");
+            }
 
             // the connection configuration
             $dbParams = array(
