@@ -52,7 +52,6 @@ class ProductController extends Controller
         ]);
 
         if(!empty($_POST)){
-            var_dump($_POST);
             $product = $em->getRepository("\\Model\\Product")->find($id);
             $product->setName(htmlentities($_POST["name"]));
             $product->setContent(htmlentities($_POST["content"]));
