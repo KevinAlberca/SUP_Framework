@@ -17,6 +17,7 @@ class Error extends \ErrorException
         parent::__construct();
         $this->message = $message;
         $this->writeErrorLog();
+        die($this->message);
     }
 
     public function writeErrorLog() {
