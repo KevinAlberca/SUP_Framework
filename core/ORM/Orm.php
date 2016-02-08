@@ -16,6 +16,9 @@ class Orm
 
     public static $em = null;
 
+    /**
+     * Orm constructor.
+     */
     public function __construct()
     {
         if(empty(self::$em)) {
@@ -39,6 +42,9 @@ class Orm
 
     }
 
+    /**
+     * @return EntityManager|null
+     */
     public function getEntityManager(){
         return self::$em;
     }
