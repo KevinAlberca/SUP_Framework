@@ -13,5 +13,5 @@ add_product:
     controller: "Product:addProduct"
 
 edit_product:
-    route: "/edit/<id>"
+    route: "/admin/edit/<id>"
     controller: "Product:editThisProduct"

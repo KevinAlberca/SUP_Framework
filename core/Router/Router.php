@@ -96,7 +96,7 @@ class Router
                         "controller" => $routes["controller"],
                         "arguments" => $arguments,
                     ];
-                } 
+                }
             }
         }
     }
