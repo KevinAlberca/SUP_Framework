@@ -52,7 +52,7 @@ class Controller
      * @param string $url
      */
     public function redirectTo($url = "/") {
-        header("Location: http://".$_SERVER["SERVER_NAME"]."/".$url);
+        header("Location: http://".$_SERVER["SERVER_NAME"].$url);
         exit();
     }
 
